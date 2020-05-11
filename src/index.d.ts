@@ -1,15 +1,6 @@
 declare module libraryCreator {
 
    /**
-    * Extension configuration file interface
-    * @interface
-    * @property {string} rootDir Path to directory for resolving library
-    */
-   export interface config {
-      rootDir: string
-   }
-
-   /**
     * Extension initialization data
     * @interface
     * @property {INames} names Names, required for creating a library

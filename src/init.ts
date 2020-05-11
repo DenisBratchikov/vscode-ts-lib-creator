@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import * as path from 'path';
+import * as fs from 'fs';
 import {ERRORS} from './error';
 import {DEFAULT_INIT_DATA} from './constants';
 
@@ -10,52 +10,63 @@ const REG_EXP_ROOT_MODULE_DIR = /(\w|\d)+$/ig;
 const REG_EXP_TEST_USER_INPUT = /^(\w|\d)+\/(\w|\d)+(\/(\w|\d)+)?$/ig;
 
 /**
- * Returns valid initialization data for the creator
- * @param {string} config Configuration file content
- * @param {string} rootPath Path to the project directory
+ * Returns absolute path to the module
+ * @param {string} modulePath Path to the module
  */
-export async function getInitData(config: libraryCreator.config, rootPath: string): Promise<libraryCreator.initData | never> {
-    const userInput: string | undefined = await vscode.window.showInputBox();
-    const initData: libraryCreator.initData = collectData(checkUserInput(userInput), config.rootDir, rootPath);
+export async function getModulePath(modulePath: string): Promise<string | never> {
+    if (modulePath) {
+        return modulePath;
+    }
+    const userInput: string | undefined = await vscode.window.showInputBox({
+        placeHolder: 'Module absolute path'
+    });
+    if (userInput && fs.existsSync(userInput)) {
+        return userInput;
+    }
+    throw new Error(ERRORS.incorrectPath);
+}
+
+/**
+ * Returns valid initialization data for the creator
+ * @param {string} modulePath Path to the module
+ */
+export async function getInitData(modulePath: string): Promise<libraryCreator.initData | never> {
+    const userInput: string | undefined = await vscode.window.showInputBox({
+        placeHolder: 'Library name/Component name'
+    });
+    const initData: libraryCreator.initData = collectData(checkUserInput(userInput), modulePath);
     return initData;
 }
 
 /**
  * Parses user input and collects initialozation data
  * @param {string} userInput User input string
- * @param {string} rootDir Path to directory for resolving library
- * @param {string} rootPath Path to the project directory
+ * @param {string} modulePath Path to the module
  */
-function collectData(userInput: string, rootDir: string, rootPath: string): libraryCreator.initData | never {
+function collectData(userInput: string, modulePath: string): libraryCreator.initData | never {
     const names: string[] = userInput.split('/');
     const initData: libraryCreator.initData = DEFAULT_INIT_DATA;
-    switch (names.length) {
-        case 2:
-            [initData.names.lib, initData.names.component] = names;
-            initData.names.module = parsePath(rootDir) || parsePath(rootPath);
-            initData.path = getModulePath(rootDir);
-            break;
-        case 3:
-            [initData.names.module, initData.names.lib, initData.names.component] = names;
-            initData.path = path.join(getModulePath(rootDir), initData.names.module);
-            break;
-        default:
-            throw new Error(ERRORS.userInput)
+    if (names.length === 2) {
+        [initData.names.lib, initData.names.component] = names;
+        initData.names.module = parsePath(modulePath);
+        initData.path = modulePath
+    } else {
+        throw new Error(ERRORS.userInput)
     }
     return initData;
 }
 
 /**
  * Returns module name from configuration file
- * @param {string} rootDir Path to directory for resolving library
+ * @param {string} modulePath Path to directory for resolving library
  * @remark Executes when user inputs 2 names (library and component)
  */
-function parsePath(rootDir: string): string {
-    const match = rootDir.match(REG_EXP_ROOT_MODULE_DIR);
+function parsePath(modulePath: string): string {
+    const match = modulePath.match(REG_EXP_ROOT_MODULE_DIR);
     if (match?.length) {
         return match[0];
     } else {
-        return '';
+        throw new Error(ERRORS.moduleName);
     }
 }
 
@@ -70,17 +81,4 @@ function checkUserInput(userInput: string | undefined): string | never {
         throw new Error(ERRORS.initName);
     }
     return userInput
-}
-
-/**
- * Returns path to the module from configuration file
- * @param {string} rootDir Path to directory for resolving library
- */
-function getModulePath(rootDir: string): string | never {
-    const projectPath = vscode.workspace.rootPath;
-    if (projectPath) {
-        return path.join(projectPath, rootDir);
-    } else {
-        throw new Error(ERRORS.vscodeRootPath)
-    }
 }

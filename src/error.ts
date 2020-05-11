@@ -12,9 +12,9 @@ export function showError(error: Error | null): void {
 
 // Error messages for user
 export enum ERRORS {
+	incorrectPath = 'Incorrent absolute path',
 	userInput = 'Component and Library names were not filled correctly',
-	moduleNameDefine = 'Can not define module name from tensor.lib.json or user input',
+	moduleName = 'Module name is incorrect',
 	vscodeRootPath = 'Can not define vscode root path',
-	initName = 'Error in module / component / library names. Check tensor.lib.json file and user input and try again',
-	modulePathNotExists = 'Module path does not exist'
+	initName = 'Error in module / component / library names. Check tensor.lib.json file and user input and try again'
 }
