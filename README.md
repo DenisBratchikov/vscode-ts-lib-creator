@@ -12,8 +12,24 @@ Library structure includes:
 
 ## Features
 
-You can activate the extension via command palette using extension title **Create Library** or via context menu on any folder
+* Command **Create TS library** lets you to create TS library, where styles are imported from components
+* Command **Create TS + Less library** lets you to create TS library with *.less* file, where all style files are imported
+* Command **Add component to library** lets you to create new component in existing library
+
+## USAGE
+
+You can activate the extension via command palette using extension title **Create TS library** / **Create TS + Less library** / **Add component to library** or via context menu on any folder.
+To create *TS* or *TS + Less* library open context menu on module folder and to create component open context menu on library folder.
+**IMPORTANT** You must create component in library with the same file structure as one this plugin creates.
 
 ## Extension settings
 
 There are no settings for now
+
+## Release
+
+# 1.0.0
+
+* Rename *Create Library* to *Create TS library*
+* Add command *Create TS + Less library*
+* Add command *Add component to library*
