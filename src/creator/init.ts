@@ -1,15 +1,47 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
-import {ERRORS} from './error';
-import {DEFAULT_INIT_DATA, USER_INPUT_PLACEHOLDER, USER_INPUT_REG_EXPS} from './constants';
+import {
+    DEFAULT_INIT_DATA, USER_INPUT_PLACEHOLDER, USER_INPUT_REG_EXPS, ERRORS
+} from './constants';
+import {IInitData} from '.';
+
+/**
+ * Returns initializating data for creating library
+ * @param {string} path Path to the folder, where the context menu was opened
+ */
+export function getLibraryData(path: string): Promise<IInitData> {
+    return getPath(path, USER_INPUT_PLACEHOLDER.libraryPath).then(modulePath => {
+        return getLibraryInitData(modulePath).then((initData: IInitData | void) => {
+			if (initData) {
+				return initData;
+			}
+			throw new Error(ERRORS.initData);
+		});
+    });
+}
+
+/**
+ * Returns initializating data for creating library
+ * @param {string} path Path to the folder, where the context menu was opened
+ */
+export function getComponentData(path: string): Promise<IInitData> {
+    return getPath(path, USER_INPUT_PLACEHOLDER.componentPath).then(libraryPath => {
+        return getComponentInitData(libraryPath).then((initData: IInitData | void) => {
+			if (initData) {
+				return initData;
+			}
+			throw new Error(ERRORS.initData)
+		});
+    });
+}
 
 /**
  * Returns absolute path to the module
  * @param {string} modulePath Path to the module
  * @param {string} placeHolder Placeholder for the dropdown
  */
-export async function getPath(modulePath: string, placeHolder: string): Promise<string | never> {
+async function getPath(modulePath: string, placeHolder: string): Promise<string | never> {
     if (modulePath) {
         return modulePath;
     }
@@ -24,9 +56,9 @@ export async function getPath(modulePath: string, placeHolder: string): Promise<
  * Returns valid initialization data for the creating library
  * @param {string} modulePath Path to the module
  */
-export async function getLibraryInitData(modulePath: string): Promise<libraryCreator.initData | never> {
+async function getLibraryInitData(modulePath: string): Promise<IInitData | never> {
     const userInput: string | undefined = await getEntityName(USER_INPUT_PLACEHOLDER.libraryNames);
-    const initData: libraryCreator.initData = collectLibraryData(userInput, modulePath);
+    const initData: IInitData = collectLibraryData(userInput, modulePath);
     return checkPathExistence(initData.path).then(() => initData);
 }
 
@@ -34,9 +66,9 @@ export async function getLibraryInitData(modulePath: string): Promise<libraryCre
  * Returns valid initialization data for the creating component in library
  * @param {string} modulePath Path to the module
  */
-export async function getComponentInitData(modulePath: string): Promise<libraryCreator.initData | never> {
+async function getComponentInitData(modulePath: string): Promise<IInitData | never> {
     const userInput: string | undefined = await getEntityName(USER_INPUT_PLACEHOLDER.componentName);
-    const initData: libraryCreator.initData = collectComponentData(userInput, modulePath);
+    const initData: IInitData = collectComponentData(userInput, modulePath);
     return checkPathExistence(initData.path).then(() => initData);
 }
 
@@ -53,13 +85,13 @@ function getEntityName(placeHolder: string): Thenable<string | undefined> {
  * @param {string} userInput User input string
  * @param {string} moduleparsePath Path to the module
  */
-function collectLibraryData(userInput: string | undefined, modulePath: string): libraryCreator.initData | never {
+function collectLibraryData(userInput: string | undefined, modulePath: string): IInitData | never {
     if (!userInput || !USER_INPUT_REG_EXPS.library.test(userInput)) {
         throw new Error(ERRORS.userInput)
     }
 
     const names: string[] = userInput.split('/');
-    const initData: libraryCreator.initData = DEFAULT_INIT_DATA;
+    const initData: IInitData = DEFAULT_INIT_DATA;
 
     if (names.length === 2) {
         [initData.names.lib, initData.names.component] = names;
@@ -76,12 +108,12 @@ function collectLibraryData(userInput: string | undefined, modulePath: string): 
  * @param {string} userInput User input string
  * @param {string} libraryPath Path to the library, where the component is creating
  */
-function collectComponentData(userInput: string | undefined, libraryPath: string): libraryCreator.initData | never {
+function collectComponentData(userInput: string | undefined, libraryPath: string): IInitData | never {
     if (!userInput || !USER_INPUT_REG_EXPS.component.test(userInput)) {
         throw new Error(ERRORS.userInput)
     }
 
-    const initData: libraryCreator.initData = DEFAULT_INIT_DATA;
+    const initData: IInitData = DEFAULT_INIT_DATA;
     const {name: libraryFolder, dir: modulePath} = parsePath(libraryPath);
     initData.names.component = userInput;
     initData.names.lib = libraryFolder.replace(/^_/, '');

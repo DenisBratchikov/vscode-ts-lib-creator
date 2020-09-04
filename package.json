@@ -2,7 +2,7 @@
 	"name": "create-lib-structure",
 	"displayName": "Typescript library structure creator",
 	"description": "Creates file structure for library on TypeScript",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"license" : "(ISC OR GPL-3.0)",
 	"publisher": "DenisBratchikov",
 	"repository": {
@@ -15,11 +15,12 @@
 	"categories": [
 		"Other"
 	],
-	"keywords": ["typescript", "tensor", "library", "structure creator", "file structure"],
+	"keywords": ["typescript", "tensor", "library", "git", "structure creator"],
 	"activationEvents": [
 		"onCommand:extension.createLibrary",
 		"onCommand:extension.createExtendedLibrary",
-		"onCommand:extension.addComponent"
+		"onCommand:extension.addComponent",
+		"onCommand:extension.tensorGit"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -35,6 +36,10 @@
 			{
 				"command": "extension.addComponent",
 				"title": "Add component to library"
+			},
+			{
+				"command": "extension.tensorGit",
+				"title": "Tensor Git"
 			}
 		],
 		"menus": {

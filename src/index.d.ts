@@ -1,29 +1,13 @@
-declare module libraryCreator {
+import {IConfig as ICreatorConfig} from './creator';
+import {IConfig as IGitConfig} from './git';
 
-   // Type of creating entity
-   export type TCreateEntity = 'library' | 'component';
-
-   /**
-    * Extension initialization data
-    * @interface
-    * @property {INames} names Names, required for creating a library
-    * @property {string} path Path to the module
-    */
-   export interface initData {
-      names: INames;
-      path: string;
-   }
-
-   /**
-    * Extension initialization data
-    * @interface
-    * @property {string} module Module name, where the library is creating
-    * @property {string} lib Library name
-    * @property {string} component Exporting from the library component name
-    */
-   interface INames {
-      module: string;
-      lib: string;
-      component: string;
-   }
+/**
+ * Configuration file interface
+ * @interface
+ * @property {ICreatorConfig} creator Configuration for library structure creator extension
+ * @property {IGitConfig} git Configuration for git extension
+ */
+export interface IFileConfig {
+   creator: ICreatorConfig;
+   git: IGitConfig;
 }
