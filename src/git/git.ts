@@ -36,10 +36,13 @@ async function getUserInput(placeHolder: string): Promise<string | never> {
  */
 async function getBranchName(branchNameSource: IConfig['branchNameSource']): Promise<string | never> {
     switch (branchNameSource) {
+        case 'clipboard':
+            const text = await vscode.env.clipboard.readText();
+            if (text?.match(TASK_MASK)) {
+                return (text.match(TASK_MASK) || [])[1];
+            }
         case 'popup':
             return getUserInput(PLACEHOLDERS.branch);
-        case 'clipboard':
-            return vscode.env.clipboard.readText();
         case 'random':
         default:
             return crypto.randomBytes(RANDOM_BYTES_LENGTH).toString('hex');
@@ -70,7 +73,7 @@ async function getData(
     if (!rcVersion && strictMode) {
         throw new Error(ERRORS.wrongCurrentBranch);
     }
-    const branchName = rcVersion ? `${rcVersion}/${branchPrefix}/${getBranchName(branchNameSource)}` : currentBranch;
+    const branchName = rcVersion ? `${rcVersion}/${branchPrefix}/${await getBranchName(branchNameSource)}` : currentBranch;
     return [remoteUrl, branchName, rcBranch];
 }
 
