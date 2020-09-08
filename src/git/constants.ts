@@ -5,7 +5,7 @@ export const RC_MASK = /rc-(\d{2}\.\d{4})/i;
 export const TASK_MASK = /^https.*opendoc\.html\?guid=(.*)/i;
 
 // Message for successed commit and push
-export const SUCCESS_MESSAGE = 'You done it! Branch name copied to clipboard. You are on branch';
+export const SUCCESS_MESSAGE = `You've done it! Branch "%name%" copied to clipboard. You are on branch`;
 
 // Length for crypto random bytes
 export const RANDOM_BYTES_LENGTH = 20;

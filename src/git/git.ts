@@ -126,5 +126,5 @@ export default async (repo: Repository, config: IConfig) => {
         await commitAndPush(repo, commitMessage, remoteUrl, branchName);
     }
     await vscode.env.clipboard.writeText(branchName);
-    vscode.window.showInformationMessage(`${SUCCESS_MESSAGE} "${rcBranch || branchName}"`);
+    vscode.window.showInformationMessage(`${SUCCESS_MESSAGE.replace('%name%', branchName)} "${rcBranch || branchName}"`);
 }
