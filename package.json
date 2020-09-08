@@ -2,7 +2,7 @@
 	"name": "create-lib-structure",
 	"displayName": "Typescript library structure creator",
 	"description": "Creates file structure for library on TypeScript",
-	"version": "2.1.0",
+	"version": "2.2.0",
 	"license": "(ISC OR GPL-3.0)",
 	"publisher": "DenisBratchikov",
 	"repository": {
