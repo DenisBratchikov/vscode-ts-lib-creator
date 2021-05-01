@@ -59,7 +59,8 @@ Default configuration:
 * Add command *Tensor Git*
 * Fix small bugs
 
-# 2.1.0
+# 3.0.0
 
 * Add extenstion configuration to VSCode settings
 * Update the inserted content
+* Add opportunity to open component documentation
