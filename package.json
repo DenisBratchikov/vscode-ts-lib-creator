@@ -2,7 +2,7 @@
 	"name": "create-lib-structure",
 	"displayName": "Typescript library structure creator",
 	"description": "Creates file structure for library on TypeScript",
-	"version": "2.2.0",
+	"version": "2.1.0",
 	"license": "(ISC OR GPL-3.0)",
 	"publisher": "DenisBratchikov",
 	"repository": {
@@ -13,7 +13,8 @@
 		"vscode": "^1.34.0"
 	},
 	"categories": [
-		"Other", "Snippets"
+		"Other",
+		"Snippets"
 	],
 	"keywords": [
 		"typescript",
@@ -95,7 +96,11 @@
 					"type": "string",
 					"default": "clipboard",
 					"description": "Источник основного названия ветки",
-					"enum": ["popup", "clipboard", "random"],
+					"enum": [
+						"popup",
+						"clipboard",
+						"random"
+					],
 					"enumDescriptions": [
 						"Вводится пользователем во всплывающем окне",
 						"Берется из буфера обмена",
