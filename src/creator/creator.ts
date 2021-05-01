@@ -8,7 +8,7 @@ import {getLibraryData, getComponentData} from './init';
 import {IInitData, IConfig} from '.';
 
 /**
- * Creates folder with given path 
+ * Creates folder with given path
  * @param {string} path Path with the folder name
  * @param {Function} callback Function, that will be called on success creation
  */
@@ -131,7 +131,7 @@ export default class {
         );
         fs.writeFile(
             interfacePath,
-            getInterfaceContent(this.module, this.lib, this.component, this.isSeparateResources),
+            getInterfaceContent(this.module, this.lib, this.component),
             showError
         );
     }

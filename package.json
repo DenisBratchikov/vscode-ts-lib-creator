@@ -13,7 +13,7 @@
 		"vscode": "^1.34.0"
 	},
 	"categories": [
-		"Other"
+		"Other", "Snippets"
 	],
 	"keywords": [
 		"typescript",
@@ -26,7 +26,8 @@
 		"onCommand:extension.createLibrary",
 		"onCommand:extension.createExtendedLibrary",
 		"onCommand:extension.addComponent",
-		"onCommand:extension.tensorGit"
+		"onCommand:extension.tensorGit",
+		"onCommand:extension.openComponentDoc"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -34,6 +35,10 @@
 			{
 				"command": "extension.createLibrary",
 				"title": "Create TS library"
+			},
+			{
+				"command": "extension.openComponentDoc",
+				"title": "Open component documentation"
 			},
 			{
 				"command": "extension.createExtendedLibrary",
@@ -65,8 +70,51 @@
 					"group": "TypeScript_Lib_Creator@1",
 					"when": "resourceExtname == ''"
 				}
+			],
+			"editor/context": [
+				{
+					"command": "extension.openComponentDoc",
+					"group": "TypeScript_Lib_Creator@1"
+				}
 			]
-		}
+		},
+		"configuration": {
+			"title": "TSlib creator",
+			"properties": {
+				"creator.separateResources": {
+					"type": "boolean",
+					"default": false,
+					"description": "Создавать шаблон и стили в отдельной папке"
+				},
+				"git.branchPrefix": {
+					"type": "string",
+					"default": "tensor",
+					"description": "Часть названия ветки после номера вехи"
+				},
+				"git.branchNameSource": {
+					"type": "string",
+					"default": "clipboard",
+					"description": "Источник основного названия ветки",
+					"enum": ["popup", "clipboard", "random"],
+					"enumDescriptions": [
+						"Вводится пользователем во всплывающем окне",
+						"Берется из буфера обмена",
+						"Генерируется случайным образом"
+					]
+				},
+				"git.strictMode": {
+					"type": "boolean",
+					"default": true,
+					"description": "Расширение работает только при позиционировании на rc ветке"
+				}
+			}
+		},
+		"snippets": [
+			{
+				"language": "xml",
+				"path": "./snippets/wml.json"
+			}
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",

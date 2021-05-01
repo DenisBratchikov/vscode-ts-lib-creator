@@ -1,0 +1,35 @@
+{
+    "ws-if": {
+        "prefix": "ws-if",
+        "body": [
+            "<ws:if data=\"{{ $1 }}\">",
+            "",
+            "</ws:if>"
+        ]
+    },
+    "ws-else": {
+        "prefix": "ws-else",
+        "body": [
+            "<ws:if data=\"{{ $1 }}\">",
+            "",
+            "</ws:if>",
+            "<ws:else>",
+            "",
+            "</ws:else>"
+        ]
+    },
+    "template": {
+        "prefix": "ws-template",
+        "body": [
+            "<ws:template name=\"$1\">",
+            "",
+            "</ws:template>"
+        ]
+    },
+    "partial": {
+        "prefix": "ws-partial",
+        "body": [
+            "<ws:partial template=\"$1\"/>"
+        ]
+    }
+}

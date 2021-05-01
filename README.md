@@ -19,9 +19,9 @@ To create *TS* or *TS + Less* library open context menu on module folder and to 
 
 ## Extension settings
 
-You can configure the extension via file **tensor.config.json**. It must be placed in your project directory
+You can configure the extension via VSCode user settings.
 Configuration for TypeScript Library Structure Creator:
-1. **separateResources** {boolean} specifies library inner structure. When *true* component style, template and interface files create in separate folder in library folder
+1. **separateResources** {boolean} specifies library inner structure. When *true* component style, template and interface files are created in separate folder in library folder
 
 Configuration for Tensor Git:
 1. **branchPrefix** {string} - part of branch name after version number
@@ -31,16 +31,16 @@ Configuration for Tensor Git:
 * **random** - branch name will be created at random
 3. **strictMode** specifies a behavior, when you are not allowed to execute git extension on non-rc branch
 
-Default configuration file:
+Default configuration:
 ```JSON
 {
     "creator": {
         "separateResources": false
     },
     "git": {
-        "branchPrefix": "ii.ivanov",
+        "branchPrefix": "tensor",
         "branchNameSource": "clipboard",
-        "strictMode": false
+        "strictMode": true
     }
 }
 ```
@@ -58,3 +58,8 @@ Default configuration file:
 * Add configuration file for extension settings
 * Add command *Tensor Git*
 * Fix small bugs
+
+# 2.1.0
+
+* Add extenstion configuration to VSCode settings
+* Update the inserted content

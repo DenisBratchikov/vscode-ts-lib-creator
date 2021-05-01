@@ -12,17 +12,14 @@ export function getLibraryContent(
     module: string, lib: string, component: string, isSeparateResources: boolean = false, toAppend: boolean = false
 ): string {
     const comments = `/**
- * @library
- * @includes ${component} ${module}/_${lib}/${component}
- * @includes I${component}Options ${module}/_${lib}/${isSeparateResources ? component : 'interface'}/I${component}
  * @public
  * @author
  */
 `;
-    const content = `
-export {default as ${component}} from './_${lib}/${component}';
-export {default as I${component}Options} from './_${lib}/${isSeparateResources ? component : 'interface'}/I${component}';`;
-    return `${toAppend ? '' : comments}${content}`;
+    const content = `export {default as ${component}} from './_${lib}/${component}';
+export {default as I${component}Options} from './_${lib}/${isSeparateResources ? component : 'interface'}/I${component}';
+`;
+    return `${toAppend ? '' : comments + '\n'}${content}`;
 }
 
 /**
@@ -62,14 +59,12 @@ export function getComponentContent(
 import * as template from 'wml!${module}/_${lib}/${component}${isSeparateResources ? `/${component}` : ''}';
 import {default as I${component}Options} from './${isSeparateResources ? component : 'interface'}/I${component}';
 
+import 'css!${stylesPath}';
+
 /**
- * @class ${module}/${lib}:${component}
- * @extends UI/Base:Control
  * @author
- * @control
  * @public
  */
-
 export default class ${component} extends Control<I${component}Options> {
     protected _template: TemplateFunction = template;
 
@@ -77,13 +72,7 @@ export default class ${component} extends Control<I${component}Options> {
         return;
     }
 
-    // Подключаем файл стилей для компонента
-    static _styles: string[] = ['${stylesPath}'];
-
-    // Подключаем платформенные классы
-    static _themes: string[] = ['Controls/Classes'];
-
-    static getDefaultOptions(): I${component}Options {
+    static get defaultProps(): I${component}Options {
         return {};
     }
 }
@@ -111,15 +100,11 @@ export function getStylesContent(): string {
  * @param {string} component Component name
  * @param {boolean} isSeparateResources Flag for placing file in separate folder
  */
-export function getInterfaceContent(
-    module: string, lib: string, component: string, isSeparateResources: boolean = false
-): string {
+export function getInterfaceContent(module: string, lib: string, component: string): string {
     return `import {IControlOptions} from 'UI/Base';
 
 /**
- * Интерфейс опций компонента ${module}/_${lib}/${component}
- * @interface ${module}/_${lib}/${isSeparateResources ? component : 'interface'}/I${component}
- * @extends UI/Base:IControlOptions
+ * Интерфейс опций компонента
  */
 export default interface I${component}Options extends IControlOptions {
 
