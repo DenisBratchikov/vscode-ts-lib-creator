@@ -10,14 +10,12 @@ export enum ERRORS {
 // Configuration file default name
 export const CONFIG_FILE_NAME = 'tensor.config.json';
 
-// Default config (when file was not found)
-export const DEFAULT_CONFIG: IFileConfig = {
-    creator: {
-        separateResources: false
-    },
-    git: {
-        branchPrefix: os.userInfo.name,
-        branchNameSource: 'clipboard',
-        strictMode: false
-    }
+// Default configs (when file was not found)
+export const DEFAULT_CREATOR_CONFIG: IFileConfig['creator'] = {
+    separateResources: false
 };
+export const DEFAULT_GIT_CONFIG: IFileConfig['git'] = {
+    branchPrefix: os.userInfo.name,
+    branchNameSource: 'clipboard',
+    strictMode: false
+}

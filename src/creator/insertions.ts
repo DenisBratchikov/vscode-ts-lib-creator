@@ -12,6 +12,7 @@ export function getLibraryContent(
     module: string, lib: string, component: string, isSeparateResources: boolean = false, toAppend: boolean = false
 ): string {
     const comments = `/**
+ * @library ${module}/${lib}
  * @public
  * @author
  */
@@ -56,8 +57,11 @@ export function getComponentContent(
         stylesPath = `${module}/${lib}/${component}`;
     }
     return `import {Control, TemplateFunction} from 'UI/Base';
-import * as template from 'wml!${module}/_${lib}/${component}${isSeparateResources ? `/${component}` : ''}';
+import {descriptor, DescriptorValidator} from 'Types/entity';
+
 import {default as I${component}Options} from './${isSeparateResources ? component : 'interface'}/I${component}';
+
+import * as template from 'wml!${module}/_${lib}/${component}${isSeparateResources ? `/${component}` : ''}';
 
 import 'css!${stylesPath}';
 
@@ -70,6 +74,10 @@ export default class ${component} extends Control<I${component}Options> {
 
     protected _beforeMount(options: I${component}Options): Promise<void> | void {
         return;
+    }
+
+    static getOptionTypes(): Partial<Record<keyof I${component}Options, DescriptorValidator>> {
+        return {};
     }
 
     static get defaultProps(): I${component}Options {
