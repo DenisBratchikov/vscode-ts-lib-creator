@@ -65,6 +65,6 @@ Default configuration:
 * Update the inserted content
 * Add opportunity to open component documentation
 
-# 3.0.1
+# 3.0.2
 
 * Add standart classes snippets
