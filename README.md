@@ -64,3 +64,7 @@ Default configuration:
 * Add extenstion configuration to VSCode settings
 * Update the inserted content
 * Add opportunity to open component documentation
+
+# 3.0.1
+
+* Add standart classes snippets

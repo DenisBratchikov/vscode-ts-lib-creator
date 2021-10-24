@@ -5,7 +5,8 @@
             "<ws:if data=\"{{ $1 }}\">",
             "",
             "</ws:if>"
-        ]
+        ],
+        "description": "Add ws:if condition"
     },
     "ws-else": {
         "prefix": "ws-else",
@@ -16,7 +17,8 @@
             "<ws:else>",
             "",
             "</ws:else>"
-        ]
+        ],
+        "description": "Add ws:if condition with else branch"
     },
     "template": {
         "prefix": "ws-template",
@@ -24,12 +26,836 @@
             "<ws:template name=\"$1\">",
             "",
             "</ws:template>"
-        ]
+        ],
+        "description": "Add ws:template tag"
     },
     "partial": {
         "prefix": "ws-partial",
         "body": [
             "<ws:partial template=\"$1\"/>"
+        ],
+        "description": "Add ws:partial"
+    },
+    "icon_size-12px": {
+        "prefix": "i-12px",
+        "body": [
+            "controls-icon_size-2xs"
+        ]
+    },
+    "icon_size-14px": {
+        "prefix": "i-14px",
+        "body": [
+            "controls-icon_size-xs"
+        ]
+    },
+    "icon_size-16px": {
+        "prefix": "i-16px",
+        "body": [
+            "controls-icon_size-s"
+        ]
+    },
+    "icon_size-24px": {
+        "prefix": "i-24px",
+        "body": [
+            "controls-icon_size-m"
+        ]
+    },
+    "icon_size-32px": {
+        "prefix": "i-32px",
+        "body": [
+            "controls-icon_size-l"
+        ]
+    },
+    "icon_style-info (#5a49ab)": {
+        "prefix": "i-style-info",
+        "body": [
+            "controls-icon_style-info"
+        ]
+    },
+    "icon_style-unaccented (#ccc)": {
+        "prefix": "i-style-unaccented",
+        "body": [
+            "controls-icon_style-unaccented"
+        ]
+    },
+    "icon_style-label (#8991a9)": {
+        "prefix": "i-style-label",
+        "body": [
+            "controls-icon_style-label"
+        ]
+    },
+    "icon_style-success (#298e3c)": {
+        "prefix": "i-style-success",
+        "body": [
+            "controls-icon_style-success"
+        ]
+    },
+    "icon_style-danger (#c2140a)": {
+        "prefix": "i-style-danger",
+        "body": [
+            "controls-icon_style-danger"
+        ]
+    },
+    "icon_style-warning (#e6a119)": {
+        "prefix": "i-style-warning",
+        "body": [
+            "controls-icon_style-warning"
+        ]
+    },
+    "icon_style-secondary (#656c87)": {
+        "prefix": "i-style-secondary",
+        "body": [
+            "controls-icon_style-secondary"
+        ]
+    },
+    "icon_style-primary (#f47843)": {
+        "prefix": "i-style-primary",
+        "body": [
+            "controls-icon_style-primary"
+        ]
+    },
+    "icon_style-default (#333)": {
+        "prefix": "i-style-default",
+        "body": [
+            "controls-icon_style-default"
+        ]
+    },
+    "icon_style-contrast (#fff)": {
+        "prefix": "i-style-contrast",
+        "body": [
+            "controls-icon_style-contrast"
+        ]
+    },
+    "icon_style-readonly (#ccc)": {
+        "prefix": "i-style-readonly",
+        "body": [
+            "controls-icon_style-readonly"
+        ]
+    },
+    "text-default (#333)": {
+        "prefix": "t-default",
+        "body": [
+            "controls-text-default"
+        ]
+    },
+    "text-primary (#cc3d00)": {
+        "prefix": "t-primary",
+        "body": [
+            "controls-text-primary"
+        ]
+    },
+    "text-secondary (#313e78)": {
+        "prefix": "t-secondary",
+        "body": [
+            "controls-text-secondary"
+        ]
+    },
+    "text-link (#05b)": {
+        "prefix": "t-link",
+        "body": [
+            "controls-text-link"
+        ]
+    },
+    "text-label (#8991a9)": {
+        "prefix": "t-label",
+        "body": [
+            "controls-text-label"
+        ]
+    },
+    "text-danger (#c2140a)": {
+        "prefix": "t-danger",
+        "body": [
+            "controls-text-danger"
+        ]
+    },
+    "text-success (#298e3c)": {
+        "prefix": "t-success",
+        "body": [
+            "controls-text-success"
+        ]
+    },
+    "text-warning (#e6a119)": {
+        "prefix": "t-warning",
+        "body": [
+            "controls-text-warning"
+        ]
+    },
+    "text-unaccented (#999)": {
+        "prefix": "t-unaccented",
+        "body": [
+            "controls-text-unaccented"
+        ]
+    },
+    "text-info (#5a49ab)": {
+        "prefix": "t-info",
+        "body": [
+            "controls-text-info"
+        ]
+    },
+    "text-readonly (#ccc)": {
+        "prefix": "t-readonly",
+        "body": [
+            "controls-text-readonly"
+        ]
+    },
+    "text-fontsize-12px": {
+        "prefix": "t-fs-12px",
+        "body": [
+            "controls-fontsize-xs"
+        ]
+    },
+    "text-fontsize-13px": {
+        "prefix": "t-fs-13px",
+        "body": [
+            "controls-fontsize-s"
+        ]
+    },
+    "text-fontsize-14px": {
+        "prefix": "t-fs-14px",
+        "body": [
+            "controls-fontsize-m"
+        ]
+    },
+    "text-fontsize-15px": {
+        "prefix": "t-fs-15px",
+        "body": [
+            "controls-fontsize-l"
+        ]
+    },
+    "text-fontsize-16px": {
+        "prefix": "t-fs-16px",
+        "body": [
+            "controls-fontsize-xl"
+        ]
+    },
+    "text-fontsize-17px": {
+        "prefix": "t-fs-17px",
+        "body": [
+            "controls-fontsize-2xl"
+        ]
+    },
+    "text-fontsize-18px": {
+        "prefix": "t-fs-18px",
+        "body": [
+            "controls-fontsize-3xl"
+        ]
+    },
+    "text-fontsize-20px": {
+        "prefix": "t-fs-20px",
+        "body": [
+            "controls-fontsize-4xl"
+        ]
+    },
+    "text-fontsize-24px": {
+        "prefix": "t-fs-24px",
+        "body": [
+            "controls-fontsize-5xl"
+        ]
+    },
+    "text-fontsize-28px": {
+        "prefix": "t-fs-28px",
+        "body": [
+            "controls-fontsize-6xl"
+        ]
+    },
+    "text-fontsize-32px": {
+        "prefix": "t-fs-32px",
+        "body": [
+            "controls-fontsize-7xl"
+        ]
+    },
+    "inline-height-16px": {
+        "prefix": "ih-16px",
+        "body": [
+            "controls-inlineheight-xs"
+        ]
+    },
+    "inline-height-20px": {
+        "prefix": "ih-20px",
+        "body": [
+            "controls-inlineheight-s"
+        ]
+    },
+    "inline-height-24px": {
+        "prefix": "ih-24px",
+        "body": [
+            "controls-inlineheight-m"
+        ]
+    },
+    "inline-height-28px": {
+        "prefix": "ih-28px",
+        "body": [
+            "controls-inlineheight-l"
+        ]
+    },
+    "inline-height-32px": {
+        "prefix": "ih-32px",
+        "body": [
+            "controls-inlineheight-xl"
+        ]
+    },
+    "inline-height-36px": {
+        "prefix": "ih-36px",
+        "body": [
+            "controls-inlineheight-2xl"
+        ]
+    },
+    "text-bold": {
+        "prefix": "t-bold",
+        "body": [
+            "controls-fontweight-bold"
+        ]
+    },
+    "background-default (#fff)": {
+        "prefix": "bg-default",
+        "body": [
+            "controls-background-default"
+        ]
+    },
+    "background-transparent (#fff)": {
+        "prefix": "bg-transparent",
+        "body": [
+            "controls-background-transparent"
+        ]
+    },
+    "padding-all-2px": {
+        "prefix": "p-2px",
+        "body": [
+            "controls-padding-3xs"
+        ]
+    },
+    "padding-left-2px": {
+        "prefix": "p-l-2px",
+        "body": [
+            "controls-padding_left-3xs"
+        ]
+    },
+    "padding-top-2px": {
+        "prefix": "p-t-2px",
+        "body": [
+            "controls-padding_top-3xs"
+        ]
+    },
+    "padding-right-2px": {
+        "prefix": "p-r-2px",
+        "body": [
+            "controls-padding_right-3xs"
+        ]
+    },
+    "padding-bottom-2px": {
+        "prefix": "p-b-2px",
+        "body": [
+            "controls-padding_bottom-3xs"
+        ]
+    },
+    "padding-all-3px": {
+        "prefix": "p-3px",
+        "body": [
+            "controls-padding-2xs"
+        ]
+    },
+    "padding-left-4px": {
+        "prefix": "p-l-4px",
+        "body": [
+            "controls-padding_left-2xs"
+        ]
+    },
+    "padding-top-4px": {
+        "prefix": "p-t-4px",
+        "body": [
+            "controls-padding_top-2xs"
+        ]
+    },
+    "padding-right-4px": {
+        "prefix": "p-r-4px",
+        "body": [
+            "controls-padding_right-2xs"
+        ]
+    },
+    "padding-bottom-4px": {
+        "prefix": "p-b-4px",
+        "body": [
+            "controls-padding_bottom-2xs"
+        ]
+    },
+    "padding-all-6px": {
+        "prefix": "p-6px",
+        "body": [
+            "controls-padding-xs"
+        ]
+    },
+    "padding-left-6px": {
+        "prefix": "p-l-6px",
+        "body": [
+            "controls-padding_left-xs"
+        ]
+    },
+    "padding-top-6px": {
+        "prefix": "p-t-6px",
+        "body": [
+            "controls-padding_top-xs"
+        ]
+    },
+    "padding-right-6px": {
+        "prefix": "p-r-6px",
+        "body": [
+            "controls-padding_right-xs"
+        ]
+    },
+    "padding-bottom-6px": {
+        "prefix": "p-b-6px",
+        "body": [
+            "controls-padding_bottom-xs"
+        ]
+    },
+    "padding-all-8px": {
+        "prefix": "p-8px",
+        "body": [
+            "controls-padding-s"
+        ]
+    },
+    "padding-left-8px": {
+        "prefix": "p-l-8px",
+        "body": [
+            "controls-padding_left-s"
+        ]
+    },
+    "padding-top-8px": {
+        "prefix": "p-t-8px",
+        "body": [
+            "controls-padding_top-s"
+        ]
+    },
+    "padding-right-8px": {
+        "prefix": "p-r-8px",
+        "body": [
+            "controls-padding_right-s"
+        ]
+    },
+    "padding-bottom-8px": {
+        "prefix": "p-b-8px",
+        "body": [
+            "controls-padding_bottom-s"
+        ]
+    },
+    "padding-all-12px": {
+        "prefix": "p-12px",
+        "body": [
+            "controls-padding-m"
+        ]
+    },
+    "padding-left-12px": {
+        "prefix": "p-l-12px",
+        "body": [
+            "controls-padding_left-m"
+        ]
+    },
+    "padding-top-12px": {
+        "prefix": "p-t-12px",
+        "body": [
+            "controls-padding_top-m"
+        ]
+    },
+    "padding-right-12px": {
+        "prefix": "p-r-12px",
+        "body": [
+            "controls-padding_right-m"
+        ]
+    },
+    "padding-bottom-12px": {
+        "prefix": "p-b-12px",
+        "body": [
+            "controls-padding_bottom-m"
+        ]
+    },
+    "padding-all-16px": {
+        "prefix": "p-16px",
+        "body": [
+            "controls-padding-l"
+        ]
+    },
+    "padding-left-16px": {
+        "prefix": "p-l-16px",
+        "body": [
+            "controls-padding_left-l"
+        ]
+    },
+    "padding-top-16px": {
+        "prefix": "p-t-16px",
+        "body": [
+            "controls-padding_top-l"
+        ]
+    },
+    "padding-right-16px": {
+        "prefix": "p-r-16px",
+        "body": [
+            "controls-padding_right-l"
+        ]
+    },
+    "padding-bottom-16px": {
+        "prefix": "p-b-16px",
+        "body": [
+            "controls-padding_bottom-l"
+        ]
+    },
+    "padding-all-20px": {
+        "prefix": "p-20px",
+        "body": [
+            "controls-padding-xl"
+        ]
+    },
+    "padding-left-20px": {
+        "prefix": "p-l-20px",
+        "body": [
+            "controls-padding_left-xl"
+        ]
+    },
+    "padding-top-20px": {
+        "prefix": "p-t-20px",
+        "body": [
+            "controls-padding_top-xl"
+        ]
+    },
+    "padding-right-20px": {
+        "prefix": "p-r-20px",
+        "body": [
+            "controls-padding_right-xl"
+        ]
+    },
+    "padding-bottom-20px": {
+        "prefix": "p-b-20px",
+        "body": [
+            "controls-padding_bottom-xl"
+        ]
+    },
+    "padding-all-24px": {
+        "prefix": "p-24px",
+        "body": [
+            "controls-padding-2xl"
+        ]
+    },
+    "padding-left-24px": {
+        "prefix": "p-l-24px",
+        "body": [
+            "controls-padding_left-2xl"
+        ]
+    },
+    "padding-top-24px": {
+        "prefix": "p-t-24px",
+        "body": [
+            "controls-padding_top-2xl"
+        ]
+    },
+    "padding-right-24px": {
+        "prefix": "p-r-24px",
+        "body": [
+            "controls-padding_right-2xl"
+        ]
+    },
+    "padding-bottom-24px": {
+        "prefix": "p-b-24px",
+        "body": [
+            "controls-padding_bottom-2xl"
+        ]
+    },
+    "padding-all-28px": {
+        "prefix": "p-28px",
+        "body": [
+            "controls-padding-3xl"
+        ]
+    },
+    "padding-left-28px": {
+        "prefix": "p-l-28px",
+        "body": [
+            "controls-padding_left-3xl"
+        ]
+    },
+    "padding-top-28px": {
+        "prefix": "p-t-28px",
+        "body": [
+            "controls-padding_top-3xl"
+        ]
+    },
+    "padding-right-28px": {
+        "prefix": "p-r-28px",
+        "body": [
+            "controls-padding_right-3xl"
+        ]
+    },
+    "padding-bottom-28px": {
+        "prefix": "p-b-28px",
+        "body": [
+            "controls-padding_bottom-3xl"
+        ]
+    },
+    "margin-all-2px": {
+        "prefix": "m-2px",
+        "body": [
+            "controls-margin-3xs"
+        ]
+    },
+    "margin-left-2px": {
+        "prefix": "m-l-2px",
+        "body": [
+            "controls-margin_left-3xs"
+        ]
+    },
+    "margin-top-2px": {
+        "prefix": "m-t-2px",
+        "body": [
+            "controls-margin_top-3xs"
+        ]
+    },
+    "margin-right-2px": {
+        "prefix": "m-r-2px",
+        "body": [
+            "controls-margin_right-3xs"
+        ]
+    },
+    "margin-bottom-2px": {
+        "prefix": "m-b-2px",
+        "body": [
+            "controls-margin_bottom-3xs"
+        ]
+    },
+    "margin-all-3px": {
+        "prefix": "m-3px",
+        "body": [
+            "controls-margin-2xs"
+        ]
+    },
+    "margin-left-4px": {
+        "prefix": "m-l-4px",
+        "body": [
+            "controls-margin_left-2xs"
+        ]
+    },
+    "margin-top-4px": {
+        "prefix": "m-t-4px",
+        "body": [
+            "controls-margin_top-2xs"
+        ]
+    },
+    "margin-right-4px": {
+        "prefix": "m-r-4px",
+        "body": [
+            "controls-margin_right-2xs"
+        ]
+    },
+    "margin-bottom-4px": {
+        "prefix": "m-b-4px",
+        "body": [
+            "controls-margin_bottom-2xs"
+        ]
+    },
+    "margin-all-6px": {
+        "prefix": "m-6px",
+        "body": [
+            "controls-margin-xs"
+        ]
+    },
+    "margin-left-6px": {
+        "prefix": "m-l-6px",
+        "body": [
+            "controls-margin_left-xs"
+        ]
+    },
+    "margin-top-6px": {
+        "prefix": "m-t-6px",
+        "body": [
+            "controls-margin_top-xs"
+        ]
+    },
+    "margin-right-6px": {
+        "prefix": "m-r-6px",
+        "body": [
+            "controls-margin_right-xs"
+        ]
+    },
+    "margin-bottom-6px": {
+        "prefix": "m-b-6px",
+        "body": [
+            "controls-margin_bottom-xs"
+        ]
+    },
+    "margin-all-8px": {
+        "prefix": "m-8px",
+        "body": [
+            "controls-margin-s"
+        ]
+    },
+    "margin-left-8px": {
+        "prefix": "m-l-8px",
+        "body": [
+            "controls-margin_left-s"
+        ]
+    },
+    "margin-top-8px": {
+        "prefix": "m-t-8px",
+        "body": [
+            "controls-margin_top-s"
+        ]
+    },
+    "margin-right-8px": {
+        "prefix": "m-r-8px",
+        "body": [
+            "controls-margin_right-s"
+        ]
+    },
+    "margin-bottom-8px": {
+        "prefix": "m-b-8px",
+        "body": [
+            "controls-margin_bottom-s"
+        ]
+    },
+    "margin-all-12px": {
+        "prefix": "m-12px",
+        "body": [
+            "controls-margin-m"
+        ]
+    },
+    "margin-left-12px": {
+        "prefix": "m-l-12px",
+        "body": [
+            "controls-margin_left-m"
+        ]
+    },
+    "margin-top-12px": {
+        "prefix": "m-t-12px",
+        "body": [
+            "controls-margin_top-m"
+        ]
+    },
+    "margin-right-12px": {
+        "prefix": "m-r-12px",
+        "body": [
+            "controls-margin_right-m"
+        ]
+    },
+    "margin-bottom-12px": {
+        "prefix": "m-b-12px",
+        "body": [
+            "controls-margin_bottom-m"
+        ]
+    },
+    "margin-all-16px": {
+        "prefix": "m-16px",
+        "body": [
+            "controls-margin-l"
+        ]
+    },
+    "margin-left-16px": {
+        "prefix": "m-l-16px",
+        "body": [
+            "controls-margin_left-l"
+        ]
+    },
+    "margin-top-16px": {
+        "prefix": "m-t-16px",
+        "body": [
+            "controls-margin_top-l"
+        ]
+    },
+    "margin-right-16px": {
+        "prefix": "m-r-16px",
+        "body": [
+            "controls-margin_right-l"
+        ]
+    },
+    "margin-bottom-16px": {
+        "prefix": "m-b-16px",
+        "body": [
+            "controls-margin_bottom-l"
+        ]
+    },
+    "margin-all-20px": {
+        "prefix": "m-20px",
+        "body": [
+            "controls-margin-xl"
+        ]
+    },
+    "margin-left-20px": {
+        "prefix": "m-l-20px",
+        "body": [
+            "controls-margin_left-xl"
+        ]
+    },
+    "margin-top-20px": {
+        "prefix": "m-t-20px",
+        "body": [
+            "controls-margin_top-xl"
+        ]
+    },
+    "margin-right-20px": {
+        "prefix": "m-r-20px",
+        "body": [
+            "controls-margin_right-xl"
+        ]
+    },
+    "margin-bottom-20px": {
+        "prefix": "m-b-20px",
+        "body": [
+            "controls-margin_bottom-xl"
+        ]
+    },
+    "margin-all-24px": {
+        "prefix": "m-24px",
+        "body": [
+            "controls-margin-2xl"
+        ]
+    },
+    "margin-left-24px": {
+        "prefix": "m-l-24px",
+        "body": [
+            "controls-margin_left-2xl"
+        ]
+    },
+    "margin-top-24px": {
+        "prefix": "m-t-24px",
+        "body": [
+            "controls-margin_top-2xl"
+        ]
+    },
+    "margin-right-24px": {
+        "prefix": "m-r-24px",
+        "body": [
+            "controls-margin_right-2xl"
+        ]
+    },
+    "margin-bottom-24px": {
+        "prefix": "m-b-24px",
+        "body": [
+            "controls-margin_bottom-2xl"
+        ]
+    },
+    "margin-all-28px": {
+        "prefix": "m-28px",
+        "body": [
+            "controls-margin-3xl"
+        ]
+    },
+    "margin-left-28px": {
+        "prefix": "m-l-28px",
+        "body": [
+            "controls-margin_left-3xl"
+        ]
+    },
+    "margin-top-28px": {
+        "prefix": "m-t-28px",
+        "body": [
+            "controls-margin_top-3xl"
+        ]
+    },
+    "margin-right-28px": {
+        "prefix": "m-r-28px",
+        "body": [
+            "controls-margin_right-3xl"
+        ]
+    },
+    "margin-bottom-28px": {
+        "prefix": "m-b-28px",
+        "body": [
+            "controls-margin_bottom-3xl"
         ]
     }
 }
