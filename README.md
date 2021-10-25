@@ -68,3 +68,7 @@ Default configuration:
 # 3.0.2
 
 * Add standart classes snippets
+
+# 3.0.3
+
+* Add snippets to .html files also
